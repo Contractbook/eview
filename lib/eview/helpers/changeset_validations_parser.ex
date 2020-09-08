@@ -69,6 +69,9 @@ if Code.ensure_loaded?(Ecto) do
         {key, {:array, Ecto.UUID}}, acc ->
           String.replace(acc, "%{#{key}}", "uuid")
 
+        {key, {:map, _}}, acc ->
+          String.replace(acc, "%{#{key}}", "map")
+
         # Everything else is a string
         {key, value}, acc ->
           String.replace(acc, "%{#{key}}", to_string(value))
